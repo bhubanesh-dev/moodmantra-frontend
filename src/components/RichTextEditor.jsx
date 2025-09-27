@@ -69,37 +69,36 @@ const CustomImage = Image.extend({
 
       // Delete image
       const deleteImage = async () => {
-        try {
-          if (!src) return;
+        // try {
+        //   if (!src) return;
 
-          const response = await fetch(`${backendUrl}/api/upload/image`, {
-            method: "DELETE",
-            headers: {
-              "Content-Type": "application/json",
-              token: token,
-            },
-            body: JSON.stringify({ imageUrl: src }),
-          });
+        //   const response = await fetch(`${backendUrl}/api/upload/image`, {
+        //     method: "DELETE",
+        //     headers: {
+        //       "Content-Type": "application/json",
+        //       token: token,
+        //     },
+        //     body: JSON.stringify({ imageUrl: src }),
+        //   });
 
-          const data = await response.json();
+        //   const data = await response.json();
 
-          if (!response.ok) {
-            console.error("Failed to delete image from server:", data.message);
-            return;
-          }
+        //   if (!response.ok) {
+        //     console.error("Failed to delete image from server:", data.message);
+        //     return;
+        //   }
 
-          console.log("Image deleted from server:", data);
-          toast.success("Image deleted from server.");
-        } catch (error) {
-          console.error("Error deleting image from server:", error);
-          toast.error("Opp! image not deleted.");
-        } finally {
-          editor
+        //   console.log("Image deleted from server:", data);
+        //   toast.success("Image deleted from server.");
+        // } catch (error) {
+        //   console.error("Error deleting image from server:", error);
+        //   toast.error("Opp! image not deleted.");
+        // } 
+        editor
             .chain()
             .focus()
             .deleteRange({ from: getPos(), to: getPos() + 1 })
             .run();
-        }
       };
 
       // Change alignment
